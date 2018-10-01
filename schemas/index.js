@@ -1,8 +1,13 @@
+var Joi = require('joi');  
+var Boom = require('boom');
+
 var schemaNames = ['user'];
 var schemas = {};
 schemaNames.forEach(function(schemaName) {  
   schemas[schemaName] = require('./' + schemaName);
 });
+
+
 exports.validate = validate;
 function validate(doc, schema, cb) {  
   if (typeof schema == 'string') {
@@ -12,7 +17,15 @@ function validate(doc, schema, cb) {
     cb(new Error('Unknown schema'));
   }
   else {
-    Joi.validate(doc, schema, cb);
+    Joi.validate(doc, schema, function(err, value) {
+      if (err) {
+        Boom.wrap(err, 400);
+        cb(err);
+      }
+      else {
+        cb(null, doc);
+      }
+    });
   }
 };
 exports.validating = function validating(schemaName, fn) {  

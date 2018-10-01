@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "async": "^2.6.1",
+    "boom": "^7.2.0",
     "joi": "^13.6.0",
     "nano": "^7.1.0",
     "pouchdb-node": "^7.0.0"
