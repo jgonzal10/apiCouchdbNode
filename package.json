@@ -12,8 +12,10 @@
   "dependencies": {
     "async": "^2.6.1",
     "boom": "^7.2.0",
+    "deep-equal": "^1.0.1",
     "joi": "^13.6.0",
     "nano": "^7.1.0",
+    "object-versions": "^1.0.0",
     "pouchdb-node": "^7.0.0"
   }
 }
